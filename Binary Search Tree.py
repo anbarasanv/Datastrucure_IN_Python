@@ -87,35 +87,32 @@ def deleteNode(root, data):
   return root
   
 
-    
- 
-    
+def main():
+  root = Node(50)
+  insertNode(root, Node(30))
+  insertNode(root, Node(20))
+  insertNode(root, Node(40))
+  insertNode(root, Node(70))
+  insertNode(root, Node(60))
+  insertNode(root, Node(80))
+  strtime = timeit.timeit()
+  res = search(root, 30)
+  stptime = timeit.timeit()
+  print("Searching for key: 30")
+  if res:
+    print("\nKey has been found: {}".format(res.data))
+    print("\nSearch Time: {}".format(strtime-stptime))
+  else:
+    print("Key does not found!")
+    print("\nSearch Time: {}".format(strtime-stptime))
+  print("\nBefore the deletion:")
+  inOrder(root)
+  strtime = timeit.timeit()
+  deleteNode(root,70)
+  stptime = timeit.timeit()
+  print("\nAfter the deletion:")
+  print("\nDelete Time: {}".format(strtime-stptime))
+  inOrder(root)
 
-
-root = Node(50)
-insertNode(root, Node(30))
-insertNode(root, Node(20))
-insertNode(root, Node(40))
-insertNode(root, Node(70))
-insertNode(root, Node(60))
-insertNode(root, Node(80))
-strtime = timeit.timeit()
-res = search(root, 30)
-stptime = timeit.timeit()
-print("Searching for key: 30")
-if res:
-  print("\nKey has been found: {}".format(res.data))
-  print("\nSearch Time: {}".format(strtime-stptime))
-else:
-  print("Key does not found!")
-  print("\nSearch Time: {}".format(strtime-stptime))
-print("\nBefore the deletion:")
-inOrder(root)
-strtime = timeit.timeit()
-deleteNode(root,70)
-stptime = timeit.timeit()
-print("\nAfter the deletion:")
-print("\nDelete Time: {}".format(strtime-stptime))
-inOrder(root)
-
-
+if __name__ == '__main__':
+  main()
