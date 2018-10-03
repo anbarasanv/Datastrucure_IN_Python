@@ -7,7 +7,7 @@ def insertNode(root,node):
   if root is None:
     root = node
   else:
-    if root.data < node.data:
+    if root.data <= node.data:
       if root.right is None:
         root.right = node
       else:
