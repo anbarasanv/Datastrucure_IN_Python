@@ -1,0 +1,18 @@
+class Solution:
+    # @param A : list of list of integers
+    # @return the same list modified
+    def rotate(self, A):
+        #Finding the rows and columns length
+        rows = len(A)
+        columns = len(A[0])
+        #defining result array with 0 
+        result = [[0]*columns for i in range(rows)]
+        #rotational factor
+        r = rows-1
+        
+        #allocating result arrays value
+        for i in range(rows):
+            for j in range(columns):
+                result[j][r] = A[i][j]
+            r = r-1
+        return result
