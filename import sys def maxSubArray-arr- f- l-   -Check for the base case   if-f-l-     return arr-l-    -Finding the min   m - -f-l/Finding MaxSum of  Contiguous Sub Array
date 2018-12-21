@@ -1,0 +1,49 @@
+import sys
+def maxSubArray(arr, f, l):
+  #Check for the base case
+  if(f==l):
+    return arr[l]
+
+  #Finding the min
+  m = (f+l)//2
+
+  return(max(
+    maxSubArray(arr,f,m),
+    maxSubArray(arr,m+1, l),
+    maxCrossSubArray(arr, f, m, l)
+  ))
+  
+
+
+def maxCrossSubArray(arr, f, m, l):
+  left_min = -sys.maxsize-1
+  lsm = 0
+  lsub = []
+  for j in range(m,f-1,-1):
+    lsm +=arr[j]
+    if(lsm>left_min):
+      lsub.append(lsm)
+      left_min = lsm
+
+  right_min = -sys.maxsize-1
+  rsm = 0
+  rsub = []
+
+  for i in range(m+1, l+1):
+    rsm +=arr[i]
+    if(rsm > right_min):
+      rsub.append(rsm)
+      right_min = rsm
+
+
+  return left_min+right_min
+
+
+
+lst =  [2, 3, 4, 5, 7] 
+
+
+l = len(lst)-1
+maxSum = maxSubArray(lst, 0,  l)
+
+print("\nMax sum: ",maxSum)
